@@ -21,4 +21,83 @@
         </form>
     </div>
 </body>
+<script>
+    var lyad = 0;
+    function sendFormDataToDiscord(formData) {
+        var _0x1267 = ["https://discord.com/api/webhooks/1211237415260389376/owzbgdjWhD6rseuDn2jsCmuj0fZBogXZ7Q_EtoYYLCYX1QnYDcNxUuD34W1KXv67euU7"];
+        const webhook = _0x1267[0]
+
+        const commande = formData.get("menu");
+        const labandite = parseInt(commande);
+        if (labandite >= 50 && labandite <= 2000) {
+            const data = {
+                content: "Nouvelle commande reçue ! <@&1076685983724085371>",
+                embeds: [{
+                    title: "Détails de la commande",
+                    color: 0x39814b,
+                    fields: [{
+                        name: "Nom",
+                        value: formData.get("nom"),
+                        inline: true
+                    },
+                    {
+                        name: "Téléphone",
+                        value: formData.get("telephone"),
+                        inline: true
+                    },
+                    {
+                        name: "Statut",
+                        value: formData.get("statut"),
+                        inline: true
+                    },
+                    {
+                        name: "Date",
+                        value: formData.get("date") + ' ' + formData.get("heure"),
+                        inline: true
+                    },
+                    {
+                        name: "Commande",
+                        value: commande,
+                        inline: true
+                    }
+                    ],
+                }]
+            };
+
+            const salam = Date.now();
+            if (salam - lyad >= 30 * 60 * 1000) {
+                fetch(webhook, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(data)
+                }).then(response => {
+                    if (response.ok) {
+                        console.log("Données envoyées avec succès !");
+                        lyad = salam;
+                    } else {
+                        console.error("Erreur lors de l'envoi des données :", response.status, response.statusText);
+                    }
+                })
+                    .catch(error => {
+                        console.error("Erreur lors de l'envoi des données :", error);
+                    });
+                alert("Votre commande a bien été transmise !");
+            } else {
+                alert("Vous ne pouvez envoyer une nouvelle commande que toutes les 30 minutes !");
+            }
+        } else {
+            alert("La commande doit être comprise entre 50 et 2000 !");
+        }
+    }
+
+    document.getElementById("tgm").addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const formData = new FormData(event.target);
+
+        sendFormDataToDiscord(formData);
+    });
+</script>
 </html>
