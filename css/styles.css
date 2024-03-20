@@ -3,7 +3,7 @@ body{
 }
 #title{
   /* background-color: #95DAC1; */
-  background-color: #7EB5A6;
+  background-color: #00bffd;
   color: #fff;
 }
 
@@ -13,7 +13,7 @@ body{
 h1{
   /* font-family: "Montserrat-Black"; */
   font-family: 'Montserrat', sans-serif;
-  font-size: 3rem;
+  font-size: 2.8rem;
   line-height: 1.5;
 }
 h3{
@@ -31,7 +31,7 @@ p{
 }
 .navbar-brand{
   font-family: "Ubuntu";
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: bold;
 }
 .nav-item{
@@ -48,7 +48,7 @@ p{
 
 /* Title Image */
 .title-image{
-  width: 60%;
+  width: 50%;
   transform: rotate(10deg);
   border-radius: 15px;
 }
@@ -62,11 +62,11 @@ p{
   text-align: center;
 }
 .icon{
-  color: #95DAC1;
+  color: #00bffd;
   padding-bottom: 8%;
 }
 .icon:hover{
-  color: #7EB5A6;
+  color: #00bffd;
 }
 
 /* Testimonial Section */
