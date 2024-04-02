@@ -21,3 +21,10 @@ iframe{
      width: 80%;
      height: 500px;
 }
+ body {
+     background-color: #0a438f;
+     color: white; 
+ }
+.title {
+     color: white; 
+ }
